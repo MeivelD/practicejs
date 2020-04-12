@@ -1,0 +1,61 @@
+        .head {
+            border-width: 5px;
+            color: maroon;
+        }
+        
+        .inputtype {
+            border-width: 4px;
+            padding-right: 30px;
+        }
+        
+        .uname {
+            height: 50px;
+            width: 70%;
+            padding: 30px;
+            color: blue;
+        }
+        
+        .pwd {
+            height: 50px;
+            width: 70%;
+            padding: 30px;
+            color: blue;
+        }
+        
+        .rem {
+            margin-right: 170px;
+            color: magenta;
+        }
+        
+        .logform {
+            height: 35px;
+            width: 40%;
+            background-color: lightgoldenrodyellow;
+            font-weight: 400;
+        }
+        /* .clearbtn {
+            padding: 10px;
+            height: 46px;
+            width: 25%;
+            background-color: red;
+            margin-left: 20px;
+        } */
+        
+        .submitbtn {
+            padding: 10px;
+            height: 44px;
+            width: 25%;
+            background-color: green;
+            margin-top: 35px;
+        }
+        
+        .container {
+            background-color: white;
+            height: 370px;
+            width: 40%;
+            margin-right: 400px;
+            margin-left: 350px;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            padding-top: 10px;
+        }

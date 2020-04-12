@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
 
-<body>
+<head>
+    <title>Login Form</title>
+</head>
 
-    <h2>JavaScript Class</h2>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="index.css">
 
-    <p id="demo"></p>
-    <script src="js/index.js"></script>
-
+<body style="background-image: url('nature.jpg');" align="center">
+    <div class="container">
+        <h1 class="head"><strong>LOGIN FORM</strong></h1>
+        <br>
+        <form name="myForm" action=" " onsubmit="return validateForm()" method="post">
+            <div class="inputtype">
+                <div>
+                    <label class="uname"><b>USERNAME</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" class="logform" required>
+                </div>
+                <br>
+                <div>
+                    <label class="pwd"><b>PASSWORD</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" class="logform" required>
+                </div>
+                <br>
+                <div>
+                    <label class="rem">
+                <input type="checkbox" checked="checked" name="remember"><strong>Remember me</strong>
+              </label>
+                </div>
+                <div>
+                    <button class="submitbtn" type="submit">LOGIN</button>
+                    <!-- <button class="clearbtn" type="button">CLEAR</button> -->
+                </div>
+        </form>
 </body>
 
 </html>
