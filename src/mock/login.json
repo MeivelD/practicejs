@@ -1,0 +1,4 @@
+loginResponse = [{
+    "name": "Ammu",
+    "password": "test"
+}];

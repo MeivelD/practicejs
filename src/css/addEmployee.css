@@ -1,0 +1,30 @@
+.buttons {
+    color: blueviolet;
+    background-color: cornsilk;
+    border-width: 4px;
+    padding-right: 20px;
+    margin-right: 15px;
+}
+
+.head {
+    border-style: double;
+    border-color: darkblue;
+    background-color: darkkhaki;
+    color: darkorchid;
+    border-width: 5px;
+    margin-bottom: 5px;
+    height: 25%;
+    width: 63%;
+    text-align: center;
+}
+
+.attribute {
+    width: 80%;
+    height: 400%;
+    margin-top: 12px;
+}
+
+.tabledetails {
+    border: 4px solid blueviolet;
+    margin: 6px;
+}

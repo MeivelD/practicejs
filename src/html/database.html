@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <h1><strong>Employee Details</strong></h1>
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="index.css">
+
+<body align="center" bgcolor="lightblue">
+    <div style="margin-left: 35%">
+        <table class="tabledetails">
+            <tr>
+                <th>NAME</th>
+                <td><input type="text" id="name" name="name" class="attribute" required pattern="[a-zA-Z\s]+ " /></td>
+            </tr>
+            <tr>
+                <th>PS NO </th>
+                <td><input type="number" id="ps_no" name="number" class="attribute" required/></td>
+            </tr>
+            <tr>
+                <th>DOB</th>
+                <td><input type="date" id="dob" name="date" class="attribute" required/></td>
+            </tr>
+            <tr>
+                <th>EMAIL ID</th>
+                <td><input type="email" id="email" name="email" class="attribute" required/></td>
+            </tr>
+            <tr>
+                <th>Date Of Filling </th>
+                <td><input type="date" id="myDate" name="date" class="attribute" required disabled/></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td><select id="gender" class="attribute">
+    <option value="female">Female</option>
+    <option value="male" >Male</option>
+    <option value="others">Others</option>
+    </select></td>
+            </tr>
+            <tr>
+                <th>Designation </th>
+                <td><input type="text" id="designation" name="text" class="attribute" required/></td>
+            </tr>
+            <tr>
+                <th>Years Of Experience</th>
+                <td><input type="number" id="experience" name="number" class="attribute" required max="3" min="1" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
