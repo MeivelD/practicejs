@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <title> EMPLOYEE </title>
+    <script src="../js/employee.js"></script>
+    <script src="../mock/employee.json"></script>
+</head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/employee.css">
+
+<body onload="addEmployee.setDefaultValues()">
+    <div class="navbar">
+        <a href="../html/dashboard.html">HOME</a>
+        <a href="../html/employee.html">EMPLOYEE</a>
+        <a href="#EMPLOYEE">REPORT</a>
+        <a href="#EMPLOYEE">ADMIN</a>
+    </div>
+    <br>
+    <div>
+        <dialog id="addEmpDialog" class="addEmpDialog">
+            <div class="dialogButtons">
+                <button id="closeAddEmpDialog" onclick="employee.closeAddEmpDialog()">X</button>
+            </div>
+            <div>
+                <form name="registerform" onsubmit="addEmployee.validateForm()">
+                    <h1 class="head">Employee Details</h1>
+                    <table class="tabledetails">
+                        <tr>
+                            <th>NAME</th>
+                            <td><input type="text" id="name" name="name" class="attribute" required pattern="[a-zA-Z\s]+ " /></td>
+                        </tr>
+                        <tr>
+                            <th>PS NO </th>
+                            <td><input type="number" id="ps_no" name="number" class="attribute" required/></td>
+                        </tr>
+                        <tr>
+                            <th>DOB</th>
+                            <td><input type="date" id="dob" name="date" class="attribute" required/></td>
+                        </tr>
+                        <tr>
+                            <th>EMAIL ID</th>
+                            <td><input type="email" id="email" name="email" class="attribute" required/></td>
+                        </tr>
+                        <tr>
+                            <th>Date Of Filling </th>
+                            <td><input type="date" id="dateOfFilling" name="date" class="attribute" required disabled/></td>
+                        </tr>
+                        <tr>
+                            <th>Gender</th>
+                            <td><select id="gender" class="attribute" required>
+                    <option value="female">Female</option>
+                    <option value="male" >Male</option>
+                    <option value="others">Others</option>
+                    </select></td>
+                        </tr>
+                        <tr>
+                            <th>Designation </th>
+                            <td><input type="text" id="designation" name="text" class="attribute" required/></td>
+                        </tr>
+                        <tr>
+                            <th>Years Of Experience</th>
+                            <td><input type="number" id="experience" name="number" class="attribute" required max="3" min="1" /></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <button class="buttons" id="resetBtn" type="reset" onclick="resetFields()">RESET</button>
+                    <button class="buttons" id="delBtn"> DELETE</button>
+                    <button class="buttons" id="editBtn" onclick="employee.enableEmployeeCtrls()">EDIT</button>
+                    <button class="buttons" id="submitBtn" type="submit">SUBMIT</button>
+                </form>
+            </div>
+            <br>
+        </dialog>
+    </div>
+
+    <div>
+        <button class="addBtn" id="addbtn" onclick="employee.openAddEmpDialog(); employee.enableEmployeeCtrls()">ADD</button>
+    </div>
+    <br>
+    <div class="row">
+        <div class=" col-md-12">
+            <label>NAME</label>
+            <input class="nameTextBox" type="text" id="nameAutoComplete" list="datalist" onkeyup="employee.autoComplete(this.value)">
+            <datalist id="datalist"> 
+        </datalist>
+            <button class="viewbutton" id="viewEmployeeBtn" onclick="viewEmployee.viewEmployeeDetails(); employee.disableEmployeeCtrls()">VIEW</button>
+        </div>
+
+</body>
+
+</html>
