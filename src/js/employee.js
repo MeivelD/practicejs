@@ -61,6 +61,8 @@ class Employee {
         document.getElementById("submitBtn").disabled = false;
         document.getElementById("editBtn").disabled = false;
     }
+
+
 }
 employee = new Employee();
 
@@ -109,17 +111,28 @@ class ViewEmployee {
         if (name == "") {
             alert("Please enter the name");
         } else {
-            employee.openAddEmpDialog();
             let currentEmployee = employeeResponse.filter(this.getEmployeeByName);
-
+            if (currentEmployee.length == 0) {
+                alert("Enter the valid employee name");
+            } else {
+                employee.openAddEmpDialog();
+                debugger
+                document.getElementById("name").value = currentEmployee[0].name;
+                document.getElementById("ps_no").value = currentEmployee[0].ps_no;
+                document.getElementById("dob").value = currentEmployee[0].dob;
+                document.getElementById("email").value = currentEmployee[0].email;
+                document.getElementById("dateOfFilling").value = currentEmployee[0].dateOfFilling;
+                document.getElementById("gender").value = currentEmployee[0].gender;
+                document.getElementById("designation").value = currentEmployee[0].designation;
+                document.getElementById("experience").value = currentEmployee[0].experience;
+            }
         }
+        document.getElementById("nameAutoComplete").value = "";
     }
 
     getEmployeeByName(employee) {
         return name == employee.name;
     }
-
-
 
 }
 viewEmployee = new ViewEmployee();

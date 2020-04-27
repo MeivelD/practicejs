@@ -94,3 +94,7 @@ body {
     background-color: rgb(14, 129, 133);
     color: white;
 }
+
+.hideButton {
+    display: none;
+}

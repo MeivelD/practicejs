@@ -29,7 +29,7 @@
                     <table class="tabledetails">
                         <tr>
                             <th>NAME</th>
-                            <td><input type="text" id="name" name="name" class="attribute" required pattern="[a-zA-Z\s]+ " /></td>
+                            <td><input type="text" id="name" name="name" class="attribute" required /></td>
                         </tr>
                         <tr>
                             <th>PS NO </th>
@@ -50,7 +50,7 @@
                         <tr>
                             <th>Gender</th>
                             <td><select id="gender" class="attribute" required>
-                    <option value="female">Female</option>
+                    <option value="female" selected>Female</option>
                     <option value="male" >Male</option>
                     <option value="others">Others</option>
                     </select></td>
@@ -67,9 +67,10 @@
                     <br>
                     <br>
                     <button class="buttons" id="resetBtn" type="reset" onclick="resetFields()">RESET</button>
-                    <button class="buttons" id="delBtn"> DELETE</button>
-                    <button class="buttons" id="editBtn" onclick="employee.enableEmployeeCtrls()">EDIT</button>
-                    <button class="buttons" id="submitBtn" type="submit">SUBMIT</button>
+                    <button class="buttons hideButton" id="delBtn" onclick="viewEmployee.deleteEmployeeDetails();"> DELETE</button>
+                    <button class="buttons hideButton" id="editBtn" onclick="employee.enableEmployeeCtrls()">EDIT</button>
+                    <button class="buttons hideButton" id="updateBtn">UPDATE</button>
+                    <button class="buttons hideButton" id="submitBtn" onclick="employee.submitEmployeeDetails();">SUBMIT</button>
                 </form>
             </div>
             <br>
@@ -77,16 +78,16 @@
     </div>
 
     <div>
-        <button class="addBtn" id="addbtn" onclick="employee.openAddEmpDialog(); employee.enableEmployeeCtrls()">ADD</button>
+        <button class="addBtn" id="addbtn" onclick="employee.openAddEmpDialog(); addEmployee.enableAddBtnCtrls(); employee.enableEmployeeCtrls(); employee.clearEmployeeCtrls();">ADD</button>
     </div>
     <br>
-    <div class="row">
-        <div class=" col-md-12">
+    <div class=" row ">
+        <div class=" col-md-12 ">
             <label>NAME</label>
             <input class="nameTextBox" type="text" id="nameAutoComplete" list="datalist" onkeyup="employee.autoComplete(this.value)">
             <datalist id="datalist"> 
         </datalist>
-            <button class="viewbutton" id="viewEmployeeBtn" onclick="viewEmployee.viewEmployeeDetails(); employee.disableEmployeeCtrls()">VIEW</button>
+            <button class="viewbutton" id="viewEmployeeBtn" onclick="viewEmployee.viewEmployeeDetails(); viewEmployee.enableViewBtnCtrls(); employee.disableEmployeeCtrls()">VIEW</button>
         </div>
 
 </body>
