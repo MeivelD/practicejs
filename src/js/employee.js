@@ -37,20 +37,18 @@ class Employee {
 
     disableEmployeeCtrls() {
         document.getElementById("name").disabled = true;
-        document.getElementById("ps_no").disabled = true;
         document.getElementById("dob").disabled = true;
         document.getElementById("email").disabled = true;
         document.getElementById("gender").disabled = true;
         document.getElementById("designation").disabled = true;
         document.getElementById("experience").disabled = true;
         document.getElementById("resetBtn").disabled = true;
-        document.getElementById("delBtn").disabled = true;
-        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("delBtn").disabled = false;
+        document.getElementById("updateBtn").disabled = true;
     }
 
     enableEmployeeCtrls() {
         document.getElementById("name").disabled = false;
-        document.getElementById("ps_no").disabled = false;
         document.getElementById("dob").disabled = false;
         document.getElementById("email").disabled = false;
         document.getElementById("gender").disabled = false;
@@ -59,9 +57,51 @@ class Employee {
         document.getElementById("resetBtn").disabled = false;
         document.getElementById("delBtn").disabled = false;
         document.getElementById("submitBtn").disabled = false;
-        document.getElementById("editBtn").disabled = false;
+        document.getElementById("updateBtn").disabled = false;
     }
 
+    clearEmployeeCtrls() {
+        document.getElementById("name").value = "";
+        document.getElementById("ps_no").value = "";
+        document.getElementById("dob").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("gender").value = "female";
+        document.getElementById("designation").value = "";
+        document.getElementById("experience").value = "";
+        addEmployee.setDefaultValues();
+    }
+
+    submitEmployeeDetails() {
+        let employeeData = {
+            "name": document.getElementById("name").value,
+            "ps_no": document.getElementById("ps_no").value,
+            "dob": document.getElementById("dob").value,
+            "email": document.getElementById("email").value,
+            "dateOfFilling": document.getElementById("dateOfFilling").value,
+            "gender": document.getElementById("gender").value,
+            "designation": document.getElementById("designation").value,
+            "experience": document.getElementById("experience").value
+        };
+
+
+        let duplicateEmployee = this.checkDuplicatePsno(employeeData);
+        if (duplicateEmployee) {
+            alert("PS_NO Already Exist");
+        } else {
+            employeeResponse.push(employeeData);
+            this.closeAddEmpDialog();
+            alert("Submitted Successfully");
+
+        }
+    }
+    checkDuplicatePsno(employee) {
+        for (let i = 0; i < employeeResponse.length; i++) {
+            if (employeeResponse[i].ps_no == employee.ps_no) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
 employee = new Employee();
@@ -71,20 +111,19 @@ class AddEmployee {
 
     }
     setDefaultValues() {
+
         let today = new Date();
         let month = today.getMonth() + 1;
         if (month < 10) {
             month = "0" + month;
         }
         let date = today.getFullYear() + '-' + month + '-' + today.getDate();
-        //alert(date);
-
-        document.getElementById("myDate").defaultValue = date;
+        document.getElementById("dateOfFilling").defaultValue = date;
 
     }
 
     validateForm() {
-        alert(1);
+
         let name = document.forms["registerform"]["name"].value;
         let psNo = document.forms["registerform"]["ps_no"].value;
         let dob = document.forms["registerform"]["dob"].value;
@@ -95,6 +134,13 @@ class AddEmployee {
         let experience = document.forms["registerform"]["experience"].value;
     }
 
+    enableAddBtnCtrls() {
+        document.getElementById("submitBtn").style.display = "block";
+        document.getElementById("editBtn").style.display = "none";
+        document.getElementById("delBtn").style.display = "none";
+        document.getElementById("updateBtn").style.display = "none";
+        document.getElementById("ps_no").disabled = false;
+    }
 
 
 }
@@ -116,7 +162,6 @@ class ViewEmployee {
                 alert("Enter the valid employee name");
             } else {
                 employee.openAddEmpDialog();
-                debugger
                 document.getElementById("name").value = currentEmployee[0].name;
                 document.getElementById("ps_no").value = currentEmployee[0].ps_no;
                 document.getElementById("dob").value = currentEmployee[0].dob;
@@ -131,7 +176,68 @@ class ViewEmployee {
     }
 
     getEmployeeByName(employee) {
+
         return name == employee.name;
+    }
+
+    enableViewBtnCtrls() {
+        document.getElementById("delBtn").style.display = "block";
+        document.getElementById("editBtn").style.display = "block";
+        document.getElementById("updateBtn").style.display = "block";
+        document.getElementById("submitBtn").style.display = "none";
+        document.getElementById("ps_no").disabled = true;
+
+    }
+
+    deleteEmployeeDetails() {
+        let employeeData = {
+            "name": document.getElementById("name").value,
+            "ps_no": document.getElementById("ps_no").value,
+            "dob": document.getElementById("dob").value,
+            "email": document.getElementById("email").value,
+            "dateOfFilling": document.getElementById("dateOfFilling").value,
+            "gender": document.getElementById("gender").value,
+            "designation": document.getElementById("designation").value,
+            "experience": document.getElementById("experience").value
+        };
+        let deleteEmployeeIndex;
+
+        for (let i = 0; i < employeeResponse.length; i++) {
+
+            if (employeeResponse[i].ps_no == employeeData.ps_no) {
+                deleteEmployeeIndex = i;
+            }
+        }
+        employeeResponse.splice(deleteEmployeeIndex, 1);
+        employee.closeAddEmpDialog();
+        alert("Deleted successfully...!");
+    }
+    updateEmployeeDetails() {
+        let updateEmployeeData = {
+            "name": document.getElementById("name").value,
+            "ps_no": document.getElementById("ps_no").value,
+            "dob": document.getElementById("dob").value,
+            "email": document.getElementById("email").value,
+            "dateOfFilling": document.getElementById("dateOfFilling").value,
+            "gender": document.getElementById("gender").value,
+            "designation": document.getElementById("designation").value,
+            "experience": document.getElementById("experience").value
+        };
+        for (let i = 0; i < employeeResponse.length; i++) {
+
+            if (employeeResponse[i].ps_no == updateEmployeeData.ps_no) {
+                employeeResponse[i].name = updateEmployeeData.name;
+                employeeResponse[i].ps_no = updateEmployeeData.ps_no;
+                employeeResponse[i].dob = updateEmployeeData.dob;
+                employeeResponse[i].email = updateEmployeeData.email;
+                employeeResponse[i].dateOfFilling = updateEmployeeData.dateOfFilling;
+                employeeResponse[i].gender = updateEmployeeData.gender;
+                employeeResponse[i].designation = updateEmployeeData.designation;
+                employeeResponse[i].experience = updateEmployeeData.experience;
+            }
+        }
+        employee.closeAddEmpDialog();
+        alert("Updated successfully...!");
     }
 
 }
