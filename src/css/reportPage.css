@@ -1,4 +1,16 @@
 .employeeGrid {
-    height: 450px;
-    width: 100%;
+    height: 420px;
+    width: 95%;
+}
+
+.grid-cell-centered {
+    text-align: center;
+}
+
+.grid-cell-left {
+    text-align: left;
+}
+
+.grid-cell-right {
+    text-align: right;
 }

@@ -4,7 +4,9 @@
 <head>
     <title>Ag-Grid Basic Example</title>
     <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="../mock/employee.json"></script>
+    <script src="../js/util.js"></script>
     <script src="../js/reportPage.js"></script>
     <link rel="stylesheet" href="../css/reportPage.css">
     <link rel="stylesheet" href="../css/dashboard.css">
@@ -18,8 +20,10 @@
         <a href="../html/reportPage.html">REPORT</a>
         <a href=" ">ADMIN</a>
     </div>
-    <h2><strong><center>EMPLOYEE REPORT</center></strong></h2>
-    <div id="employeeGrid" class="employeeGrid ag-theme-alpine"></div>
+    <div align="center">
+        <h2><strong>EMPLOYEE REPORT</strong></h2>
+        <div id="employeeGrid" class="employeeGrid ag-theme-alpine"></div>
+    </div>
 </body>
 
 </html>
