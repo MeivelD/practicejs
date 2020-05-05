@@ -1,4 +1,6 @@
 var columnDefs = [
+    /* { headerName: "S NO", field: "id"}, */
+    { headerName: "S NO", field: "id" },
     { headerName: "NAME", field: "name", minWidth: 150, cellClass: "grid-cell-left" },
     { headerName: "PSNO", field: "ps_no", minWidth: 100, cellClass: "grid-cell-centered" },
     {
@@ -8,7 +10,14 @@ var columnDefs = [
         cellClass: "grid-cell-centered",
         cellRenderer: (data) => {
             return util.formatAgGridDate(data.value, 'DD-MMM-YYYY');
-        }
+        },
+        filter: 'agDateColumnFilter',
+        filterParams: {
+            comparator: function(filterLocalDateAtMidnight, cellValue) {
+                return util.filterParamsDateComparator(filterLocalDateAtMidnight, cellValue);
+            },
+            browserDatePicker: true,
+        },
     },
     { headerName: "EMAILID", field: "email", minWidth: 200, cellClass: "grid-cell-left" },
     {
@@ -18,11 +27,18 @@ var columnDefs = [
         cellClass: "grid-cell-centered",
         cellRenderer: (data) => {
             return util.formatAgGridDate(data.value, 'DD-MMM-YYYY');
-        }
+        },
+        filter: 'agDateColumnFilter',
+        filterParams: {
+            comparator: function(filterLocalDateAtMidnight, cellValue) {
+                return util.filterParamsDateComparator(filterLocalDateAtMidnight, cellValue);
+            },
+            browserDatePicker: true,
+        },
     },
     { headerName: "GENDER", field: "gender", minWidth: 80, cellClass: "grid-cell-centered" },
     { headerName: "DESIGNATION", field: "designation", minWidth: 200, cellClass: "grid-cell-centered" },
-    { headerName: "EXPERIENCE", field: "experience", minWidth: 50, cellClass: "grid-cell-centered" }
+    { headerName: "EXPERIENCE", field: "experience", minWidth: 50, cellClass: "grid-cell-centered", filter: 'agNumberColumnFilter' }
 ];
 
 // specify the data
@@ -38,6 +54,7 @@ var gridOptions = {
         filter: true,
         resizable: true
     },
+    id: "id",
     rowData: rowData
 };
 
