@@ -1,6 +1,14 @@
 var columnDefs = [
     /* { headerName: "S NO", field: "id"}, */
-    { headerName: "S NO", field: "id" },
+    {
+        headerName: 'S NO',
+        valueGetter: 'node.id',
+        minWidth: 80,
+        cellClass: "grid-cell-centered",
+        cellRenderer: (data) => {
+            return parseInt(data.value) + 1;
+        },
+    },
     { headerName: "NAME", field: "name", minWidth: 150, cellClass: "grid-cell-left" },
     { headerName: "PSNO", field: "ps_no", minWidth: 100, cellClass: "grid-cell-centered" },
     {
